@@ -1,0 +1,52 @@
+Persona Name:
+- Healthcare professional
+Role/User Type:
+- Employee of healthcare provider
+Goals:
+- Quickly review user inputs (health info)
+- Make informed medical decisions based on user inputs
+- Informing those users of their decisions/conclusions
+- Efficiently manage user profiles, adding or removing users and their info when necessary
+- Ensure confidential information remains secure
+Pain Points:
+- Busy schedule
+- Limited time per patient
+- Outdated patient information
+- Need to adhere to legal restrictions, such as removing patient info when no longer needed
+Related User Stories (IDs):
+- S1
+- S2
+
+S1
+Features:
+- View user inputs
+Story Title:
+- View user health information
+User Story:
+- Needs to make decisions based on user input, but may be short on time, so information should be displayed completely but concisely
+Acceptance Criteria:
+- List of patients
+- When clicking on a patient their data is displayed
+- Time info was changed is displayed
+Priority (Must/Should/Could):
+- Must
+Justification of prioritisation/Trade-off:
+- Fundamental part of the app, healthcare professionals need to be able to view information to make decisions on it
+Story Owner:
+- Matt
+
+S2
+Features:
+- Manage patient
+Story Title:
+- User changes healthcare provider, info is no longer needed, or info needs updating manually on the healthcare professional's end
+User Story:
+- Wants to maintain up to date and accurate patient records
+Acceptance Criteria:
+- Healthcare professional user can make changes to a patient user, such as delete user or overwrite user info, recording a reason and time for the change.
+Priority (Must/Should/Could):
+- Must
+Justification of prioritisation/Trade-off:
+- Needed to ensure all information and patient lists can be kept up to date and accurate
+Story Owner:
+- Matt
