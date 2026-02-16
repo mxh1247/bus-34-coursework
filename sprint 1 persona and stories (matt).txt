@@ -43,7 +43,9 @@ Story Title:
 User Story:
 - Wants to maintain up to date and accurate patient records
 Acceptance Criteria:
-- Healthcare professional user can make changes to a patient user, such as delete user or overwrite user info, recording a reason and time for the change.
+- Button to update user when viewing them from the list described in S1
+- Update user button opens panel displaying each info field as updatable text boxes, additional button for deleting a user.
+- Button to save changes, when clicking prompted with a -reason for change- textbox, which, when submitted, updates the user database entry with the information and records the time of update and reason for update.
 Priority (Must/Should/Could):
 - Must
 Justification of prioritisation/Trade-off:
