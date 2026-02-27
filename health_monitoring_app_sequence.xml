@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net">
+  <diagram name="Health Monitoring System Sequence Diagram" id="health-monitoring-system-sequence-diagram">
+    <mxGraphModel dx="1174" dy="740" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="title" value="&lt;b&gt;Health Monitoring System Sequence Diagram&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=22;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="285" y="25" width="600" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Feature/background regions -->
+        <mxCell id="feature1_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#dae8fc;strokeColor=#6c8ebf;opacity=45;" vertex="1" parent="1">
+          <mxGeometry x="35" y="135" width="600" height="225" as="geometry" />
+        </mxCell>
+        <mxCell id="feature1_label" value="&lt;b&gt;Feature 1: Health data submission and notification&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="50" y="150" width="360" height="24" as="geometry" />
+        </mxCell>
+
+        <mxCell id="feature2_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#d5e8d4;strokeColor=#82b366;opacity=45;" vertex="1" parent="1">
+          <mxGeometry x="40" y="375" width="585" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="feature2_label" value="&lt;b&gt;Feature 2: Professional review and feedback&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="55" y="390" width="340" height="24" as="geometry" />
+        </mxCell>
+
+        <mxCell id="family_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#dae8fc;strokeColor=#6c8ebf;opacity=45;" vertex="1" parent="1">
+          <mxGeometry x="260" y="545" width="560" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="family_label" value="&lt;b&gt;Family member interaction&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="275" y="560" width="190" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="admin_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#fff2cc;strokeColor=#d6b656;opacity=55;" vertex="1" parent="1">
+          <mxGeometry x="260" y="620" width="775" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="admin_label" value="&lt;b&gt;Admin interaction&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="275" y="635" width="160" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Participants -->
+        <mxCell id="elder_patient" value="Elder Patient" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=14;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="140" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="health_monitoring_system" value="Health Monitoring&lt;br&gt;System" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=14;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="235" y="80" width="200" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="healthcare_professional" value="Healthcare&lt;br&gt;Professional" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=14;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="485" y="80" width="200" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="family_member" value="Family Member" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=14;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="735" y="80" width="160" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="system_admin" value="System Admin" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=14;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="950" y="80" width="160" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- Lifelines -->
+        <mxCell id="lifeline_elder" value="" style="endArrow=none;html=1;rounded=0;dashed=1;dashPattern=6 6;strokeColor=#666666;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="110" y="135" as="sourcePoint" />
+            <mxPoint x="110" y="690" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lifeline_system" value="" style="endArrow=none;html=1;rounded=0;dashed=1;dashPattern=6 6;strokeColor=#666666;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="335" y="135" as="sourcePoint" />
+            <mxPoint x="335" y="690" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lifeline_professional" value="" style="endArrow=none;html=1;rounded=0;dashed=1;dashPattern=6 6;strokeColor=#666666;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="585" y="135" as="sourcePoint" />
+            <mxPoint x="585" y="690" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lifeline_family" value="" style="endArrow=none;html=1;rounded=0;dashed=1;dashPattern=6 6;strokeColor=#666666;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="815" y="135" as="sourcePoint" />
+            <mxPoint x="815" y="690" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lifeline_admin" value="" style="endArrow=none;html=1;rounded=0;dashed=1;dashPattern=6 6;strokeColor=#666666;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1030" y="135" as="sourcePoint" />
+            <mxPoint x="1030" y="690" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Activation / internal processing -->
+        <mxCell id="system_activation" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="329" y="220" width="12" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Messages -->
+        <mxCell id="msg_submit_health_data" value="Elder health data (form)" style="endArrow=block;endFill=1;html=1;rounded=0;strokeColor=#333333;fontSize=12;labelBackgroundColor=#ffffff;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="110" y="190" as="sourcePoint" />
+            <mxPoint x="335" y="190" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="msg_validate_store_data" value="Validate &amp; store data" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#333333;fontSize=12;labelBackgroundColor=#ffffff;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="335" y="230" as="sourcePoint" />
+            <mxPoint x="335" y="280" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="445" y="230" />
+              <mxPoint x="445" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="msg_notify_professional" value="Notify healthcare professional" style="endArrow=block;endFill=1;html=1;rounded=0;strokeColor=#333333;fontSize=12;labelBackgroundColor=#ffffff;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="335" y="320" as="sourcePoint" />
+            <mxPoint x="585" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="msg_review_patient_data" value="Review patient data" style="endArrow=block;endFill=1;html=1;rounded=0;strokeColor=#333333;fontSize=12;labelBackgroundColor=#ffffff;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="585" y="425" as="sourcePoint" />
+            <mxPoint x="335" y="425" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="msg_submit_feedback" value="Submit feedback" style="endArrow=block;endFill=1;html=1;rounded=0;strokeColor=#333333;fontSize=12;labelBackgroundColor=#ffffff;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="585" y="480" as="sourcePoint" />
+            <mxPoint x="335" y="480" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="msg_send_feedback_patient" value="Send feedback to patient" style="endArrow=block;endFill=1;html=1;rounded=0;strokeColor=#333333;fontSize=12;labelBackgroundColor=#ffffff;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="335" y="510" as="sourcePoint" />
+            <mxPoint x="110" y="510" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="msg_view_patient_updates" value="View patient updates" style="endArrow=block;endFill=1;html=1;rounded=0;strokeColor=#333333;fontSize=12;labelBackgroundColor=#ffffff;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="815" y="575" as="sourcePoint" />
+            <mxPoint x="335" y="575" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="msg_manage_system_users" value="Manage system / users" style="endArrow=block;endFill=1;html=1;rounded=0;strokeColor=#333333;fontSize=12;labelBackgroundColor=#ffffff;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1030" y="650" as="sourcePoint" />
+            <mxPoint x="335" y="650" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
