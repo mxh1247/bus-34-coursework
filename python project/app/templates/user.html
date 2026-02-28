@@ -30,6 +30,10 @@
             {{ form.heart.label }}<br>
             {{ form.heart }}<br>
         </p>
+        <p>
+            {{ form.user_comment.label }}<br>
+            {{ form.user_comment }}<br>
+        </p>
 
         <p>{{ form.submit() }}</p>
     </form>
@@ -43,6 +47,7 @@
             {{ log.water }}
             {{ log.blood }}
             {{ log.heart }}
+            {{ log.user_comment }}
         </li>
             {% else %}
                 <li>User has no health logs</li>

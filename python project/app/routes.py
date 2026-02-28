@@ -58,6 +58,7 @@ def user():
             sleep=form.sleep.data,
             blood=form.blood.data,
             heart=form.heart.data,
+            user_comment=form.user_comment.data,
         )
 
         try:

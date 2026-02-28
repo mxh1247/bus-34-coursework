@@ -11,6 +11,7 @@ class UserHealthLog(db.Model):
     sleep: so.Mapped[int] = so.mapped_column(sa.Integer, nullable=False)
     blood: so.Mapped[float] = so.mapped_column(sa.Float, nullable=False)
     heart: so.Mapped[int] = so.mapped_column(sa.Integer, nullable=False)
+    user_comment: so.Mapped[str] = so.mapped_column(sa.String(256), index=True)
 
     user = db.relationship("User", back_populates="health_logs")
 

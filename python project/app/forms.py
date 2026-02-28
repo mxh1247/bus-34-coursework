@@ -20,4 +20,5 @@ class UserHealthForm(FlaskForm):
     water = FloatField("Amount of Water Consumed (Litres)", validators=[DataRequired()])
     blood = FloatField("Blood Pressure", validators=[DataRequired()])
     heart = IntegerField("Heart Rate", validators=[DataRequired()])
+    user_comment = StringField("Comment (optional)")
     submit = SubmitField("Submit Health Log")
