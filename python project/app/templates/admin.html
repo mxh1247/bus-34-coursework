@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>Health App - Admin</h1>
+
+    <ul>
+        {% for user in users %}
+        <li>
+            {{ user.username }}
+            <a href="{{ url_for('delete_user', user_id=user.id) }}">delete</a>
+        </li>
+            {% else %}
+                <li>No users</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ url_for('logout') }}">logout</a>
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>Health App - User</h1>
+
+     <form action='' method="post" novalidate>
+         {{ form.hidden_tag() }}
+        <p>
+            {{ form.log_date.label }}<br>
+            {{ form.log_date }}<br>
+        </p>
+        <p>
+            {{ form.steps.label }}<br>
+            {{ form.steps }}<br>
+        </p>
+        <p>
+            {{ form.sleep.label }}<br>
+            {{ form.sleep }}<br>
+        </p>
+        <p>
+            {{ form.water.label }}<br>
+            {{ form.water }}<br>
+        </p>
+        <p>
+            {{ form.blood.label }}<br>
+            {{ form.blood }}<br>
+        </p>
+        <p>
+            {{ form.heart.label }}<br>
+            {{ form.heart }}<br>
+        </p>
+
+        <p>{{ form.submit() }}</p>
+    </form>
+
+    <ul>
+        {% for log in logs %}
+        <li>
+            {{ log.log_date }}
+            {{ log.steps }}
+            {{ log.sleep }}
+            {{ log.water }}
+            {{ log.blood }}
+            {{ log.heart }}
+        </li>
+            {% else %}
+                <li>User has no health logs</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ url_for('logout') }}">logout</a>
+
+{% endblock %}
