@@ -16,6 +16,7 @@ Pain Points:
 Related User Stories (IDs):
 - S1
 - S2
+- S4
 
 S1
 Features:
@@ -35,7 +36,7 @@ Justification of prioritisation/Trade-off:
 Story Owner:
 - Matt
 
-S2
+S4
 Features:
 - Manage patient
 Story Title:
@@ -50,5 +51,22 @@ Priority (Must/Should/Could):
 - Must
 Justification of prioritisation/Trade-off:
 - Needed to ensure all information and patient lists can be kept up to date and accurate
+Story Owner:
+- Matt
+
+S2
+Features:
+- Data Visualisation
+Story Title:
+- View health trend graph to more easily visualise changes in health
+User Story:
+- As a healthcare professional monitoring multiple patients, I want to view clear, clinically useful graphs of a patient’s logged health data, so that I can quickly identify trends, detect early warning signs, and make informed decisions about their care.
+Acceptance Criteria:
+- Given the system has stored patient health data with time stamps when the healthcare professional opens the graph view then the graph should display accurate, time‑stamped data directly from the patient’s logs
+- Given the healthcare professional accesses the graph when the system retrieves and processes the patient’s data then the graph should load quickly without requiring any manual data manipulation from the use
+Priority (Must/Should/Could):
+- Should
+Justification of prioritisation/Trade-off:
+- This feature directly supports clinical workflow, enhances decision‑making, and improves the quality and safety of patient care. It transforms raw data into actionable insight, which is exactly what healthcare professionals need.
 Story Owner:
 - Matt
