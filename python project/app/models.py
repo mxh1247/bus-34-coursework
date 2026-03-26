@@ -9,9 +9,11 @@ class UserHealthLog(db.Model):
     log_date: so.Mapped[datetime] = so.mapped_column(sa.DATE, nullable=False, default=lambda: datetime.now(timezone.utc))
     steps: so.Mapped[int] = so.mapped_column(sa.Integer, nullable=False)
     sleep: so.Mapped[int] = so.mapped_column(sa.Integer, nullable=False)
+    water: so.Mapped[float | None] = so.mapped_column(sa.Float, nullable=True)
     blood: so.Mapped[float] = so.mapped_column(sa.Float, nullable=False)
     heart: so.Mapped[int] = so.mapped_column(sa.Integer, nullable=False)
     user_comment: so.Mapped[str] = so.mapped_column(sa.String(256), index=True)
+    admin_comment: so.Mapped[str | None] = so.mapped_column(sa.String(256), nullable=True)
 
     user = db.relationship("User", back_populates="health_logs")
 

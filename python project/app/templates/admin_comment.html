@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>Health App - Comment on Log</h1>
+
+    <p>User: {{ user.username }}</p>
+    <p>Log Date: {{ log.log_date }}</p>
+    <p>Steps: {{ log.steps }}</p>
+    <p>Sleep: {{ log.sleep }}</p>
+    <p>Blood Pressure: {{ log.blood }}</p>
+    <p>Heart Rate: {{ log.heart }}</p>
+    <p>User Comment: {{ log.user_comment or "No user comment" }}</p>
+
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.admin_comment.label }}<br>
+            {{ form.admin_comment }}<br>
+            {% for error in form.admin_comment.errors %}
+                <span>{{ error }}</span><br>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+
+    <a href="{{ url_for('admin_user_logs', user_id=user.id) }}">back to logs</a>
+    <a href="{{ url_for('admin') }}">back to admin</a>
+
+{% endblock %}

@@ -4,7 +4,7 @@ from wtforms.fields.choices import SelectField
 from wtforms.fields.numeric import IntegerField, FloatField
 from wtforms.fields.datetime import DateField
 
-from wtforms.validators import DataRequired
+from wtforms.validators import DataRequired, Length
 
 from datetime import date
 
@@ -20,5 +20,10 @@ class UserHealthForm(FlaskForm):
     water = FloatField("Amount of Water Consumed (Litres)", validators=[DataRequired()])
     blood = FloatField("Blood Pressure", validators=[DataRequired()])
     heart = IntegerField("Heart Rate", validators=[DataRequired()])
-    user_comment = StringField("Comment (optional)")
+    user_comment = StringField("Comment (optional)", validators=[Length(max=256)])
     submit = SubmitField("Submit Health Log")
+
+
+class AdminCommentForm(FlaskForm):
+    admin_comment = StringField("Admin Comment", validators=[Length(max=256)])
+    submit = SubmitField("Save Admin Comment")

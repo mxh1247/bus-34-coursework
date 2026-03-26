@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>Health App - {{ user.username }} Logs</h1>
+
+    <ul>
+        {% for log in logs %}
+        <li>
+            {{ log.log_date }}
+            steps: {{ log.steps }}
+            sleep: {{ log.sleep }}
+            water: {{ log.water if log.water is not none else "No water data" }}
+            blood: {{ log.blood }}
+            heart: {{ log.heart }}
+            user comment: {{ log.user_comment or "No comment" }}
+            admin comment: {{ log.admin_comment or "No admin comment" }}
+            <a href="{{ url_for('admin_add_comment', user_id=user.id, log_id=log.id) }}">add/edit comment</a>
+        </li>
+            {% else %}
+                <li>{{ user.username }} has no health logs</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ url_for('admin_user_graph', user_id=user.id) }}">view graph</a>
+    <a href="{{ url_for('admin') }}">back to admin</a>
+    <a href="{{ url_for('logout') }}">logout</a>
+
+{% endblock %}

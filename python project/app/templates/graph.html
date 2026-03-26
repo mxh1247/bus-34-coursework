@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>Health App - {{ page_title }}</h1>
+
+    {% if chart_data.labels %}
+        <p>Numerical log stats by log date for {{ user.username }}.</p>
+
+        <div id="chart-container">
+            {% for metric in chart_data.metrics %}
+                <section class="chart-card">
+                    <h2>{{ metric["label"] }}</h2>
+                    <canvas
+                        class="log-chart"
+                        width="720"
+                        height="260"
+                        data-title="{{ metric["label"] }}"
+                        data-color="{{ metric["color"] }}"
+                        data-values='{{ metric["values"]|tojson }}'
+                        data-labels='{{ chart_data.labels|tojson }}'>
+                    </canvas>
+                </section>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>{{ user.username }} has no health logs to graph.</p>
+    {% endif %}
+
+    <a href="{{ back_url }}">{{ back_label }}</a>
+    <a href="{{ url_for('logout') }}">logout</a>
+
+    <style>
+        #chart-container {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .chart-card {
+            border: 1px solid #cccccc;
+            padding: 1rem;
+        }
+
+        .chart-card h2 {
+            margin-top: 0;
+        }
+
+        .log-chart {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #e5e5e5;
+            background: #ffffff;
+        }
+    </style>
+
+    <script>
+        function drawChart(canvas) {
+            const labels = JSON.parse(canvas.dataset.labels);
+            const rawValues = JSON.parse(canvas.dataset.values);
+            const values = rawValues.map((value) => value === null ? null : Number(value));
+            const color = canvas.dataset.color;
+            const title = canvas.dataset.title;
+
+            const ctx = canvas.getContext("2d");
+            const width = canvas.width;
+            const height = canvas.height;
+            const padding = { top: 20, right: 20, bottom: 50, left: 55 };
+            const chartWidth = width - padding.left - padding.right;
+            const chartHeight = height - padding.top - padding.bottom;
+            const validValues = values.filter((value) => value !== null);
+
+            ctx.clearRect(0, 0, width, height);
+            ctx.font = "12px sans-serif";
+            ctx.fillStyle = "#111111";
+
+            if (!validValues.length || labels.length === 0) {
+                ctx.fillText("No data available", padding.left, height / 2);
+                return;
+            }
+
+            let minValue = Math.min(...validValues);
+            let maxValue = Math.max(...validValues);
+
+            if (minValue === maxValue) {
+                minValue -= 1;
+                maxValue += 1;
+            }
+
+            const range = maxValue - minValue;
+            const yForValue = (value) => {
+                const normalized = (value - minValue) / range;
+                return padding.top + chartHeight - (normalized * chartHeight);
+            };
+            const xForIndex = (index) => {
+                if (labels.length === 1) {
+                    return padding.left + (chartWidth / 2);
+                }
+                return padding.left + ((chartWidth * index) / (labels.length - 1));
+            };
+
+            ctx.strokeStyle = "#cccccc";
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(padding.left, padding.top);
+            ctx.lineTo(padding.left, padding.top + chartHeight);
+            ctx.lineTo(padding.left + chartWidth, padding.top + chartHeight);
+            ctx.stroke();
+
+            ctx.fillText(title, padding.left, 12);
+
+            const yTicks = 4;
+            for (let tick = 0; tick <= yTicks; tick += 1) {
+                const value = minValue + ((range * tick) / yTicks);
+                const y = padding.top + chartHeight - ((chartHeight * tick) / yTicks);
+                ctx.strokeStyle = "#eeeeee";
+                ctx.beginPath();
+                ctx.moveTo(padding.left, y);
+                ctx.lineTo(padding.left + chartWidth, y);
+                ctx.stroke();
+                ctx.fillStyle = "#333333";
+                ctx.fillText(value.toFixed(1), 8, y + 4);
+            }
+
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            let segmentOpen = false;
+
+            values.forEach((value, index) => {
+                if (value === null) {
+                    segmentOpen = false;
+                    return;
+                }
+
+                const x = xForIndex(index);
+                const y = yForValue(value);
+
+                if (!segmentOpen) {
+                    ctx.moveTo(x, y);
+                    segmentOpen = true;
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            });
+
+            ctx.stroke();
+
+            values.forEach((value, index) => {
+                const x = xForIndex(index);
+
+                if (value !== null) {
+                    const y = yForValue(value);
+                    ctx.fillStyle = color;
+                    ctx.beginPath();
+                    ctx.arc(x, y, 3, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+
+                ctx.save();
+                ctx.translate(x, height - 8);
+                ctx.rotate(-Math.PI / 4);
+                ctx.fillStyle = "#333333";
+                ctx.fillText(labels[index], 0, 0);
+                ctx.restore();
+            });
+        }
+
+        document.querySelectorAll(".log-chart").forEach(drawChart);
+    </script>
+
+{% endblock %}
