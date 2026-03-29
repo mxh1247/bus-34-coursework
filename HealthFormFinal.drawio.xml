@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net">
+  <diagram name="UserHealthForm Class Diagram" id="q8av_Fo4rngW-2qe5xEh">
+    <mxGraphModel dx="1461" dy="816" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2gYaWuOe_bBwXxpjv5hf-127" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=34;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13" value="&lt;b&gt;&amp;lt;&amp;lt;form&amp;gt;&amp;gt;&lt;br&gt;UserHealthForm&lt;/b&gt;&lt;hr&gt;+ log_date: DateField&lt;br&gt;&amp;nbsp;&amp;nbsp;label = &quot;Log Date&quot;&lt;br&gt;&amp;nbsp;&amp;nbsp;format = &quot;%Y-%m-%d&quot;&lt;br&gt;&amp;nbsp;&amp;nbsp;default = date.today&lt;br&gt;+ steps: IntegerField&lt;br&gt;&amp;nbsp;&amp;nbsp;label = &quot;Steps&quot;&lt;br&gt;&amp;nbsp;&amp;nbsp;constraint = required&lt;br&gt;+ sleep: IntegerField&lt;br&gt;&amp;nbsp;&amp;nbsp;label = &quot;Hours of Sleep&quot;&lt;br&gt;&amp;nbsp;&amp;nbsp;constraint = required&lt;br&gt;+ water: FloatField&lt;br&gt;&amp;nbsp;&amp;nbsp;label = &quot;Amount of Water Consumed (Litres)&quot;&lt;br&gt;&amp;nbsp;&amp;nbsp;constraint = required&lt;br&gt;+ blood: FloatField&lt;br&gt;&amp;nbsp;&amp;nbsp;label = &quot;Blood Pressure&quot;&lt;br&gt;&amp;nbsp;&amp;nbsp;constraint = required&lt;br&gt;+ heart: IntegerField&lt;br&gt;&amp;nbsp;&amp;nbsp;label = &quot;Heart Rate&quot;&lt;br&gt;&amp;nbsp;&amp;nbsp;constraint = required&lt;br&gt;+ user_comment: StringField&lt;br&gt;&amp;nbsp;&amp;nbsp;label = &quot;Comment (optional)&quot;&lt;br&gt;&amp;nbsp;&amp;nbsp;constraint = max 256 characters&lt;br&gt;+ submit: SubmitField&lt;br&gt;&amp;nbsp;&amp;nbsp;label = &quot;Submit Health Log&quot;" vertex="1">
+          <mxGeometry height="585" width="390" x="60" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="2gYaWuOe_bBwXxpjv5hf-128" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=34;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13" value="&lt;b&gt;&amp;lt;&amp;lt;model&amp;gt;&amp;gt;&lt;br&gt;User&lt;/b&gt;&lt;hr&gt;+ id: Integer&lt;br&gt;+ username: String(80)&lt;br&gt;+ health_logs: List&amp;lt;UserHealthLog&amp;gt;" vertex="1">
+          <mxGeometry height="125" width="245" x="540" y="125" as="geometry" />
+        </mxCell>
+        <mxCell id="2gYaWuOe_bBwXxpjv5hf-129" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=34;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13" value="&lt;b&gt;&amp;lt;&amp;lt;model&amp;gt;&amp;gt;&lt;br&gt;UserHealthLog&lt;/b&gt;&lt;hr&gt;+ id: Integer&lt;br&gt;+ user_id: Integer&lt;br&gt;+ log_date: DATE&lt;br&gt;+ steps: Integer&lt;br&gt;+ sleep: Integer&lt;br&gt;+ water: Float&lt;br&gt;+ blood: Float&lt;br&gt;+ heart: Integer&lt;br&gt;+ user_comment: String(256)&lt;br&gt;+ admin_comment: String(256)&lt;hr&gt;" vertex="1">
+          <mxGeometry height="335" width="245" x="540" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="2gYaWuOe_bBwXxpjv5hf-130" edge="1" parent="1" source="2gYaWuOe_bBwXxpjv5hf-127" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;strokeColor=#666666;fontSize=12" target="2gYaWuOe_bBwXxpjv5hf-129" value="supplies values for">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2gYaWuOe_bBwXxpjv5hf-131" edge="1" parent="1" source="2gYaWuOe_bBwXxpjv5hf-128" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;strokeColor=#2d7600;fontSize=12" target="2gYaWuOe_bBwXxpjv5hf-129" value="health_logs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2gYaWuOe_bBwXxpjv5hf-132" connectable="0" parent="2gYaWuOe_bBwXxpjv5hf-131" style="edgeLabel;html=1;resizable=0;labelBackgroundColor=none;fontSize=12;align=right;verticalAlign=bottom" value="1" vertex="1">
+          <mxGeometry relative="1" x="-0.8" y="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2gYaWuOe_bBwXxpjv5hf-133" connectable="0" parent="2gYaWuOe_bBwXxpjv5hf-131" style="edgeLabel;html=1;resizable=0;labelBackgroundColor=none;fontSize=12;align=left;verticalAlign=top" value="*" vertex="1">
+          <mxGeometry relative="1" x="0.8" y="-1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
