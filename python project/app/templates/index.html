@@ -2,11 +2,20 @@
 
 {% block content %}
 
-    <h1>Health App - Login/Register</h1>
+    <section class="hero-block">
+        <p class="eyebrow">Login or register</p>
+        <h1>Health App</h1>
+        <p class="lead">Enter a username to track daily steps, sleep, water, blood pressure, heart rate, and comments.</p>
+    </section>
 
-    <form action="" method="post" novalidate>
-        <input type="text" name="username" placeholder="Enter username" required>
-        <button type="submit">Continue</button>
+    <form class="entry-form" action="" method="post" novalidate>
+        <div class="field">
+            <label for="username">Username</label>
+            <input id="username" type="text" name="username" placeholder="Enter username" required>
+        </div>
+        <div class="form-actions">
+            <button type="submit">Continue</button>
+        </div>
     </form>
 
 {% endblock %}

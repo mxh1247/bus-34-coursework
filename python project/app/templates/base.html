@@ -1,20 +1,29 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ page_title|default("Health App") }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-    <hr>
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-    {% endwith %}
-    <main>{% block content %}    {% endblock %}</main>
+    <div class="page-shell">
+        <header class="site-header">
+            <a class="brand" href="{{ url_for('index') }}">Health App</a>
+            <span class="site-subtitle">Daily wellness tracker</span>
+        </header>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="flash-list" role="status" aria-live="polite">
+                    {% for message in messages %}
+                        <p class="flash-message">{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <main class="app-main">{% block content %}{% endblock %}</main>
+    </div>
 </body>
 </html>

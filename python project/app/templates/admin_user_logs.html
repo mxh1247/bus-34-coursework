@@ -2,28 +2,51 @@
 
 {% block content %}
 
-    <h1>Health App - {{ user.username }} Logs</h1>
+    <section class="page-heading">
+        <p class="eyebrow">User logs</p>
+        <h1>Health App - {{ user.username }} Logs</h1>
+        <p class="lead">Review health entries and add admin comments where needed.</p>
+    </section>
 
-    <ul>
-        {% for log in logs %}
-        <li>
-            {{ log.log_date }}
-            steps: {{ log.steps }}
-            sleep: {{ log.sleep }}
-            water: {{ log.water if log.water is not none else "No water data" }}
-            blood: {{ log.blood }}
-            heart: {{ log.heart }}
-            user comment: {{ log.user_comment or "No comment" }}
-            admin comment: {{ log.admin_comment or "No admin comment" }}
-            <a href="{{ url_for('admin_add_comment', user_id=user.id, log_id=log.id) }}">add/edit comment</a>
-        </li>
+    <section class="logs-section">
+        <div class="section-header">
+            <h2>Logs</h2>
+            <div class="action-row">
+                <a class="button button-secondary" href="{{ url_for('admin_user_graph', user_id=user.id) }}">View graph</a>
+                <a class="button button-secondary" href="{{ url_for('admin') }}">Back to admin</a>
+                <a class="button button-secondary" href="{{ url_for('logout') }}">Logout</a>
+            </div>
+        </div>
+
+        <div class="log-list">
+            {% for log in logs %}
+                <article class="log-card">
+                    <div class="log-card__header">
+                        <p class="log-date">{{ log.log_date }}</p>
+                        <a class="button button-secondary" href="{{ url_for('admin_add_comment', user_id=user.id, log_id=log.id) }}">Add/edit comment</a>
+                    </div>
+                    <div class="metric-grid">
+                        <div class="metric"><span>Steps</span><strong>{{ log.steps }}</strong></div>
+                        <div class="metric"><span>Sleep</span><strong>{{ log.sleep }} hours</strong></div>
+                        <div class="metric"><span>Water</span><strong>{{ log.water if log.water is not none else "No water data" }}</strong></div>
+                        <div class="metric"><span>Blood</span><strong>{{ log.blood }}</strong></div>
+                        <div class="metric"><span>Heart</span><strong>{{ log.heart }} bpm</strong></div>
+                    </div>
+                    <div class="comment-grid">
+                        <div class="comment-box">
+                            <span>User comment</span>
+                            <p>{{ log.user_comment or "No comment" }}</p>
+                        </div>
+                        <div class="comment-box">
+                            <span>Admin comment</span>
+                            <p>{{ log.admin_comment or "No admin comment" }}</p>
+                        </div>
+                    </div>
+                </article>
             {% else %}
-                <li>{{ user.username }} has no health logs</li>
-        {% endfor %}
-    </ul>
-
-    <a href="{{ url_for('admin_user_graph', user_id=user.id) }}">view graph</a>
-    <a href="{{ url_for('admin') }}">back to admin</a>
-    <a href="{{ url_for('logout') }}">logout</a>
+                <p class="empty-state">{{ user.username }} has no health logs.</p>
+            {% endfor %}
+        </div>
+    </section>
 
 {% endblock %}

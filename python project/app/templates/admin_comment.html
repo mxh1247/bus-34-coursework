@@ -2,29 +2,47 @@
 
 {% block content %}
 
-    <h1>Health App - Comment on Log</h1>
+    <section class="page-heading">
+        <p class="eyebrow">Admin comment</p>
+        <h1>Health App - Comment on Log</h1>
+    </section>
 
-    <p>User: {{ user.username }}</p>
-    <p>Log Date: {{ log.log_date }}</p>
-    <p>Steps: {{ log.steps }}</p>
-    <p>Sleep: {{ log.sleep }}</p>
-    <p>Blood Pressure: {{ log.blood }}</p>
-    <p>Heart Rate: {{ log.heart }}</p>
-    <p>User Comment: {{ log.user_comment or "No user comment" }}</p>
+    <section class="details-panel">
+        <dl class="details-list">
+            <dt>User</dt>
+            <dd>{{ user.username }}</dd>
+            <dt>Log date</dt>
+            <dd>{{ log.log_date }}</dd>
+            <dt>Steps</dt>
+            <dd>{{ log.steps }}</dd>
+            <dt>Sleep</dt>
+            <dd>{{ log.sleep }}</dd>
+            <dt>Blood pressure</dt>
+            <dd>{{ log.blood }}</dd>
+            <dt>Heart rate</dt>
+            <dd>{{ log.heart }}</dd>
+            <dt>User comment</dt>
+            <dd>{{ log.user_comment or "No user comment" }}</dd>
+        </dl>
+    </section>
 
-    <form action="" method="post" novalidate>
+    <form class="health-form" action="" method="post" novalidate>
         {{ form.hidden_tag() }}
-        <p>
-            {{ form.admin_comment.label }}<br>
-            {{ form.admin_comment }}<br>
+        <div class="field">
+            {{ form.admin_comment.label }}
+            {{ form.admin_comment(class_="form-control") }}
             {% for error in form.admin_comment.errors %}
-                <span>{{ error }}</span><br>
+                <span class="form-error">{{ error }}</span>
             {% endfor %}
-        </p>
-        <p>{{ form.submit() }}</p>
+        </div>
+        <div class="form-actions">
+            {{ form.submit(class_="primary-button") }}
+        </div>
     </form>
 
-    <a href="{{ url_for('admin_user_logs', user_id=user.id) }}">back to logs</a>
-    <a href="{{ url_for('admin') }}">back to admin</a>
+    <div class="action-row">
+        <a class="button button-secondary" href="{{ url_for('admin_user_logs', user_id=user.id) }}">Back to logs</a>
+        <a class="button button-secondary" href="{{ url_for('admin') }}">Back to admin</a>
+    </div>
 
 {% endblock %}

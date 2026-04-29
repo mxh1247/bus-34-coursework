@@ -2,60 +2,87 @@
 
 {% block content %}
 
-    <h1>Health App - User</h1>
+    <section class="page-heading">
+        <p class="eyebrow">User dashboard</p>
+        <h1>Health App - {{ username }}</h1>
+        <p class="lead">Add today's health log and review your most recent entries.</p>
+    </section>
 
-     <form action='' method="post" novalidate>
-         {{ form.hidden_tag() }}
-        <p>
-            {{ form.log_date.label }}<br>
-            {{ form.log_date }}<br>
-        </p>
-        <p>
-            {{ form.steps.label }}<br>
-            {{ form.steps }}<br>
-        </p>
-        <p>
-            {{ form.sleep.label }}<br>
-            {{ form.sleep }}<br>
-        </p>
-        <p>
-            {{ form.water.label }}<br>
-            {{ form.water }}<br>
-        </p>
-        <p>
-            {{ form.blood.label }}<br>
-            {{ form.blood }}<br>
-        </p>
-        <p>
-            {{ form.heart.label }}<br>
-            {{ form.heart }}<br>
-        </p>
-        <p>
-            {{ form.user_comment.label }}<br>
-            {{ form.user_comment }}<br>
-        </p>
+    <section>
+        <h2>Add a health log</h2>
+        <form class="health-form form-grid" action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <div class="field">
+                {{ form.log_date.label }}
+                {{ form.log_date(class_="form-control") }}
+            </div>
+            <div class="field">
+                {{ form.steps.label }}
+                {{ form.steps(class_="form-control") }}
+            </div>
+            <div class="field">
+                {{ form.sleep.label }}
+                {{ form.sleep(class_="form-control") }}
+            </div>
+            <div class="field">
+                {{ form.water.label }}
+                {{ form.water(class_="form-control") }}
+            </div>
+            <div class="field">
+                {{ form.blood.label }}
+                {{ form.blood(class_="form-control") }}
+            </div>
+            <div class="field">
+                {{ form.heart.label }}
+                {{ form.heart(class_="form-control") }}
+            </div>
+            <div class="field field-wide">
+                {{ form.user_comment.label }}
+                {{ form.user_comment(class_="form-control") }}
+            </div>
+            <div class="form-actions">
+                {{ form.submit(class_="primary-button") }}
+            </div>
+        </form>
+    </section>
 
-        <p>{{ form.submit() }}</p>
-    </form>
+    <section class="logs-section">
+        <div class="section-header">
+            <h2>Recent logs</h2>
+            <div class="action-row">
+                <a class="button button-secondary" href="{{ url_for('user_graph') }}">View graph</a>
+                <a class="button button-secondary" href="{{ url_for('logout') }}">Logout</a>
+            </div>
+        </div>
 
-    <ul>
-        {% for log in logs %}
-        <li>
-            {{ log.log_date }}
-            steps: {{ log.steps }}
-            sleep: {{ log.sleep }}
-            water: {{ log.water }}
-            blood: {{ log.blood }}
-            heart: {{ log.heart }}
-            your comment: {{ log.user_comment or "No comment" }}
-            admin comment: {{ log.admin_comment or "No admin comment" }}
-        </li>
+        <div class="log-list">
+            {% for log in logs %}
+                <article class="log-card">
+                    <div class="log-card__header">
+                        <p class="log-date">{{ log.log_date }}</p>
+                    </div>
+                    <div class="metric-grid">
+                        <div class="metric"><span>Steps</span><strong>{{ log.steps }}</strong></div>
+                        <div class="metric"><span>Sleep</span><strong>{{ log.sleep }} hours</strong></div>
+                        <div class="metric"><span>Water</span><strong>{{ log.water }} L</strong></div>
+                        <div class="metric"><span>Blood</span><strong>{{ log.blood }}</strong></div>
+                        <div class="metric"><span>Heart</span><strong>{{ log.heart }} bpm</strong></div>
+                    </div>
+                    <div class="comment-grid">
+                        <div class="comment-box">
+                            <span>Your comment</span>
+                            <p>{{ log.user_comment or "No comment" }}</p>
+                        </div>
+                        <div class="comment-box">
+                            <span>Admin comment</span>
+                            <p>{{ log.admin_comment or "No admin comment" }}</p>
+                        </div>
+                    </div>
+                </article>
             {% else %}
-                <li>User has no health logs</li>
-        {% endfor %}
-    </ul>
-
-    <a href="{{ url_for('user_graph') }}">view graph</a>
-    <a href="{{ url_for('logout') }}">logout</a>
+                <p class="empty-state">User has no health logs.</p>
+            {% endfor %}
+        </div>
+    </section>
 
 {% endblock %}

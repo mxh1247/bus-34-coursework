@@ -2,21 +2,31 @@
 
 {% block content %}
 
-    <h1>Health App - Admin</h1>
+    <section class="page-heading">
+        <p class="eyebrow">Admin area</p>
+        <h1>Health App - Admin</h1>
+        <p class="lead">Review users, inspect their logs, and open graph views.</p>
+    </section>
 
-    <ul>
+    <section class="user-list">
         {% for user in users %}
-        <li>
-            {{ user.username }}
-            <a href="{{ url_for('admin_user_logs', user_id=user.id) }}">view logs</a>
-            <a href="{{ url_for('admin_user_graph', user_id=user.id) }}">view graph</a>
-            <a href="{{ url_for('delete_user', user_id=user.id) }}">delete</a>
-        </li>
+            <article class="user-card">
+                <div class="user-card__header">
+                    <p class="user-name">{{ user.username }}</p>
+                    <div class="card-actions">
+                        <a class="button button-secondary" href="{{ url_for('admin_user_logs', user_id=user.id) }}">View logs</a>
+                        <a class="button button-secondary" href="{{ url_for('admin_user_graph', user_id=user.id) }}">View graph</a>
+                        <a class="button button-danger" href="{{ url_for('delete_user', user_id=user.id) }}">Delete</a>
+                    </div>
+                </div>
+            </article>
             {% else %}
-                <li>No users</li>
+                <p class="empty-state">No users yet.</p>
         {% endfor %}
-    </ul>
+    </section>
 
-    <a href="{{ url_for('logout') }}">logout</a>
+    <div class="action-row">
+        <a class="button button-secondary" href="{{ url_for('logout') }}">Logout</a>
+    </div>
 
 {% endblock %}

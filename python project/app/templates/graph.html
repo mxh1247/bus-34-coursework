@@ -2,12 +2,15 @@
 
 {% block content %}
 
-    <h1>Health App - {{ page_title }}</h1>
+    <section class="page-heading">
+        <p class="eyebrow">Graph view</p>
+        <h1>Health App - {{ page_title }}</h1>
+    </section>
 
     {% if chart_data.labels %}
-        <p>Numerical log stats by log date for {{ user.username }}.</p>
+        <p class="lead">Numerical log stats by log date for {{ user.username }}.</p>
 
-        <div id="chart-container">
+        <div class="chart-grid">
             {% for metric in chart_data.metrics %}
                 <section class="chart-card">
                     <h2>{{ metric["label"] }}</h2>
@@ -24,34 +27,13 @@
             {% endfor %}
         </div>
     {% else %}
-        <p>{{ user.username }} has no health logs to graph.</p>
+        <p class="empty-state">{{ user.username }} has no health logs to graph.</p>
     {% endif %}
 
-    <a href="{{ back_url }}">{{ back_label }}</a>
-    <a href="{{ url_for('logout') }}">logout</a>
-
-    <style>
-        #chart-container {
-            display: grid;
-            gap: 1rem;
-        }
-
-        .chart-card {
-            border: 1px solid #cccccc;
-            padding: 1rem;
-        }
-
-        .chart-card h2 {
-            margin-top: 0;
-        }
-
-        .log-chart {
-            max-width: 100%;
-            height: auto;
-            border: 1px solid #e5e5e5;
-            background: #ffffff;
-        }
-    </style>
+    <div class="action-row">
+        <a class="button button-secondary" href="{{ back_url }}">{{ back_label }}</a>
+        <a class="button button-secondary" href="{{ url_for('logout') }}">Logout</a>
+    </div>
 
     <script>
         function drawChart(canvas) {
